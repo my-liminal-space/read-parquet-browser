@@ -289,7 +289,7 @@ pub fn internal_find_for_rcp(physical_risk_type_name: &str, rcp_id: i32) -> Resu
 pub fn filter_for_rcp(rcp_id: i32, batch: &RecordBatch) -> ArrowResult<RecordBatch> {
 
     let filter_array = batch
-        .column(0)
+        .column(2)
         .as_any()
         .downcast_ref::<Int32Array>()
         .unwrap()
