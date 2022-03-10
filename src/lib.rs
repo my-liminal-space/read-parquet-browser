@@ -14,7 +14,8 @@ use js_sys::Uint8Array;
 use parquet::arrow::{ParquetFileArrowReader, ArrowReader};
 use parquet::file::reader::FileReader;
 use parquet::file::serialized_reader::SerializedFileReader;
-use parquet::util::cursor::SliceableCursor;
+//use parquet::util::cursor::SliceableCursor;
+use parquet::file::serialized_reader::SliceableCursor;
 
 use std::collections::HashMap;
 use std::convert::TryFrom;
