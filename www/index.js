@@ -51,11 +51,20 @@ async function main() {
         + arrow_result_ipc_msg_bytes.byteLength);
 
     try {
+        /*
         let record_batch_reader = arrow.RecordBatchStreamReader.from(arrow_result_ipc_msg_bytes);
         record_batch_reader.open();
         console.log("schema is: " + record_batch_reader.schema);
         let result_record_batch = record_batch_reader.next();
-        console.log("result rowcount: " + result_record_batch.value.length);
+        //console.log("result rowcount: " + result_record_batch.value.length);
+        console.log("result rowcount: " + result_record_batch.data);
+        */
+        const rcpTable = arrow.tableFromIPC(arrow_result_ipc_msg_bytes);
+        //console.log(`created Table, rows: ${JSON.stringify(rcpTable.data, null, 2)}`);
+        console.log("schema is: " + rcpTable.schema);
+        console.log("numRows: " + rcpTable.numRows);
+        console.log(`row 0:  ${JSON.stringify(rcpTable.get(0), null, 2)}`);
+
     } catch (record_batch_reader_err) {
         console.log("problem with record_batch_reader: " + record_batch_reader_err);
     }

@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "dependencies": {
-    "apache-arrow": "^5.0.0",
+    "apache-arrow": "^7.0.0",
     "read-parquet-browser": "file:../pkg"
   },
   "devDependencies": {
