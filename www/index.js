@@ -63,7 +63,24 @@ async function main() {
         //console.log(`created Table, rows: ${JSON.stringify(rcpTable.data, null, 2)}`);
         console.log("schema is: " + rcpTable.schema);
         console.log("numRows: " + rcpTable.numRows);
-        console.log(`row 0:  ${JSON.stringify(rcpTable.get(0), null, 2)}`);
+        //console.log(`row 0:  ${JSON.stringify(rcpTable.get(0), null, 2)}`);
+
+        let rowCount = 0;
+
+        for (const row of rcpTable) {
+
+            for (let cell of row) {
+                if (cell) {
+                    console.log(`rowCount: ${rowCount}, cell:\n${JSON.stringify(cell, null, 2)}`);
+                } else {
+                    console.log(`rowCount: ${rowCount}, null cell.`);
+                }
+            }
+
+            if (++rowCount > 5) {
+                break;
+            }
+        }
 
     } catch (record_batch_reader_err) {
         console.log("problem with record_batch_reader: " + record_batch_reader_err);
